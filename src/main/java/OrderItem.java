@@ -1,18 +1,19 @@
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Getter
+@Setter
 public class OrderItem {
 
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
@@ -23,4 +24,9 @@ public class OrderItem {
 
     private BigDecimal price;
 
+    public OrderItem(Product product, int quantity, BigDecimal price) {
+        this.product = product;
+        this.quantity = quantity;
+        this.price = price;
+    }
 }

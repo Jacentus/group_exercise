@@ -14,11 +14,25 @@ public class JpaTest {
 
     @Test
     public void test1(){
-        OrderItem orderItem = new OrderItem();
+        Address buyerAddress = new Address("Kadmowa", "Gdańsk");
+        Address sellerAddress = new Address("Świętojańska", "Gdynia");
+
+        Buyer buyer = new Buyer("Jacek_kupujący", buyerAddress);
+
+        Seller seller = new Seller("Jacek_sprzedający", sellerAddress);
+
+        List<ProductType> productTypeList = new ArrayList<>();
+        productTypeList.add(ProductType.ELECTRONICS);
+        Product product = new Product("Książka", BigDecimal.valueOf(100), productTypeList);
+
+        OrderItem orderItem = new OrderItem(product, 10, BigDecimal.valueOf(1000));
+
         List<OrderItem> listOfOrderItems = new ArrayList<>();
         listOfOrderItems.add(orderItem);
-        Order order = new Order(listOfOrderItems, new Buyer(), new Seller(), BigDecimal.valueOf(10_000));
-        TestUtils.run(entityManager -> entityManager.persist(order));
+
+        Order order = new Order(listOfOrderItems, buyer, seller, BigDecimal.valueOf(1000));
+
+       TestUtils.run(entityManager -> entityManager.persist(order));
     }
 
 }

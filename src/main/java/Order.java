@@ -1,32 +1,34 @@
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "order")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @EqualsAndHashCode(of="id")
 public class Order {
 
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
-    @OneToMany
-    private List<OrderItem> orderItems;
+    @JoinColumn(name = "id")
+    @OneToMany/*(mappedBy = "order", cascade = CascadeType.ALL)*/
+    private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne
+    @ManyToOne
     private Buyer buyer;
 
-    @OneToOne
+    @ManyToOne
     private Seller seller;
 
     private BigDecimal totalPrice;
-
 
     public Order(List<OrderItem> orderItems, Buyer buyer, Seller seller, BigDecimal totalPrice) {
         this.orderItems = orderItems;
