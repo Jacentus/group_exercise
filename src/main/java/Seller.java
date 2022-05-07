@@ -19,4 +19,7 @@ public class Seller {
     @Embedded
     private Address address;
 
+    public Seller(Address address) {
+        this.address = address;
+    }
 }

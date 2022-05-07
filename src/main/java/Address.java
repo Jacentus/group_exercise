@@ -5,13 +5,12 @@ import jakarta.persistence.Id;
 import lombok.NoArgsConstructor;
 
 @Embeddable
-@Entity
 @NoArgsConstructor
 public class Address {
 
-    @GeneratedValue
+/*    @GeneratedValue
     @Id
-    private Long id;
+    private Long id;*/
 
     private String street;
 

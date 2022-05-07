@@ -1,4 +1,5 @@
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
@@ -7,6 +8,7 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(of="id")
 public class Order {
 
@@ -25,4 +27,11 @@ public class Order {
 
     private BigDecimal totalPrice;
 
+
+    public Order(List<OrderItem> orderItems, Buyer buyer, Seller seller, BigDecimal totalPrice) {
+        this.orderItems = orderItems;
+        this.buyer = buyer;
+        this.seller = seller;
+        this.totalPrice = totalPrice;
+    }
 }
