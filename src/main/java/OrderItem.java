@@ -17,7 +17,7 @@ public class OrderItem {
     @Id
     private Long id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Product product;
 
     private int quantity;

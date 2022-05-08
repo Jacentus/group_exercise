@@ -30,7 +30,7 @@ public class JpaTest {
         List<OrderItem> listOfOrderItems = new ArrayList<>();
         listOfOrderItems.add(orderItem);
 
-        Order order = new Order(listOfOrderItems, buyer, seller, BigDecimal.valueOf(1000));
+        Orders order = new Orders(listOfOrderItems, buyer, seller, BigDecimal.valueOf(1000));
 
        TestUtils.run(entityManager -> entityManager.persist(order));
     }

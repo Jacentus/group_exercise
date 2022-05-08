@@ -22,4 +22,5 @@ public class Address {
         this.street = street;
         this.town = town;
     }
+
 }

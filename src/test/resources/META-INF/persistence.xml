@@ -6,7 +6,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>Product</class>
         <class>Address</class>
-        <class>Order</class>
+        <class>Orders</class>
         <class>OrderItem</class>
         <class>Seller</class>
         <class>Buyer</class>
